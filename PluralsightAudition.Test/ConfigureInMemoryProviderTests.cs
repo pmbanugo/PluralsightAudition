@@ -22,7 +22,7 @@ namespace PluralsightAudition.Test
             var pattern = @"<PackageReference Include=""Microsoft.EntityFrameworkCore.InMemory""";
             var rgx = new Regex(pattern);
 
-            Assert.True(rgx.IsMatch(file), "The project doesn't have a reference to the `Microsoft.EntityFrameworkCore.InMemory` Nuget package.");
+            Assert.True(rgx.IsMatch(file), "The project doesn't have a reference to the `Microsoft.EntityFrameworkCore.InMemory` Nuget package. Make sure to add it from Nuget");
         }
         
         [Fact(DisplayName = "Add BookContext to the service layer by calling AddDbContext<BookContext>")]
@@ -56,7 +56,7 @@ namespace PluralsightAudition.Test
                 file = streamReader.ReadToEnd();
             }
 
-            Assert.True(file.Contains("using Microsoft.EntityFrameworkCore"), @"`Startup.cs` doesn't contain a reference to the `Microsoft.EntityFrameworkCore` namespace.");
+            Assert.True(file.Contains("using Microsoft.EntityFrameworkCore"), @"`Startup.cs` doesn't contain a reference to the `Microsoft.EntityFrameworkCore` namespace. Make sure to add a `using` statement for that namespace.");
         }
     }
 }
